@@ -40,7 +40,7 @@
           {
             "name": "obj",
             "in": "body",
-            "description": "Change product rating (from 1 to 5)",
+            "description": "Change product rating (from 0 to 5)",
             "schema": {
               "type": "object",
               "properties": {
@@ -58,6 +58,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error"
