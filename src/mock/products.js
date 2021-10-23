@@ -24,4 +24,4 @@ module.exports = [
     title: "Продукт №1",
     rating: 5,
   }
-]
+];

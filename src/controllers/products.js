@@ -28,4 +28,4 @@ exports.updateRating = (req, res) => {
   findedProduct.rating = req.body.rating;
 
   return res.status(200).json(findedProduct);  
-}
+};
