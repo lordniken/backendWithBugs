@@ -5,6 +5,14 @@ const routes = ['src/routes.js']
 const setup = {
   host: 'localhost:4000',
   schemes: ['http'],
+  securityDefinitions: {
+    name: {
+      type: 'apiKey',
+      in: 'header',
+      name: 'Auth',
+      description: 'Type something here!'
+    },
+  },
 };
 
 swaggerAutogen(swaggerJson, routes, setup)
