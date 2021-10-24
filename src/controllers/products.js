@@ -21,8 +21,8 @@ exports.updateRating = (req, res) => {
     return res.status(404).json();
   }
 
-  if (Number(req.body.rating) > 5) {
-    return res.status(500).json();
+  if (Number(req.body.rating) > 5 || Number(req.body.rating) <= 0 || !req.body.rating || !Number.isInteger(req.body.rating)) {
+    return res.status(400).json();
   }
 
   findedProduct.rating = req.body.rating;
