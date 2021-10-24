@@ -10,7 +10,7 @@ const setup = {
       type: 'apiKey',
       in: 'header',
       name: 'Auth',
-      description: 'Type something here!'
+      description: '`For admin rights type admin`'
     },
   },
 };

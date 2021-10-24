@@ -24,7 +24,7 @@ module.exports = [
       }
     ],
     availability: true,
-    inFav: false,
+    favorite: false,
   },
   {
     id: "1002",
@@ -51,7 +51,7 @@ module.exports = [
       }
     ],
     availability: true,
-    inFav: false,
+    favorite: false,
   },
   {
     id: "1003",
@@ -59,25 +59,8 @@ module.exports = [
     imgUrl: "product.jpg",
     title: "Canon PowerShot SX400 IS с улучшенной матрицей и объективом",
     rating: 3,
-    params: [
-      {
-        name: "Физический размер",
-        value: "23.2 x 15.2 мм"
-      },
-      {
-        name: "Диафрагма",
-        value: "CMOS"
-      },
-      {
-        name: "Формат записи",
-        value: "RAW, JPEG, MP4 и другие"
-      },
-      {
-        name: "Фокусное расстояние",
-        value: "18-55 мм"
-      }
-    ],
+    params: null,
     availability: false,
-    inFav: false,
+    favorite: false,
   },
 ];

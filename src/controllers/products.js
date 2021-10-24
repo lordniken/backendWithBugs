@@ -1,14 +1,17 @@
 const products = require('../mock/products');
 
-exports.fetchProducts = (_req, res) => {
+exports.list = (_req, res) => {
+  // #swagger.tags = ['User endpoints']
+  
   return res.status(200).json(products);
 };
 
-exports.updateRating = (req, res) => {
+exports.rating = (req, res) => {
   /*
+    #swagger.tags = ['User endpoints']
+    #swagger.description = 'Change product rating (from 0 to 5)'
     #swagger.parameters['obj'] = {
       in: 'body',
-      description: 'Change product rating (from 0 to 5)',
       schema: {
           $rating: 5,
       }
@@ -30,11 +33,41 @@ exports.updateRating = (req, res) => {
   return res.status(200).json(findedProduct);  
 };
 
-exports.updateAvailability = (req, res) => {
+exports.favorite = (req, res) => {
   /*
+    #swagger.tags = ['User endpoints']
+    #swagger.description = 'Change product favorite state'
     #swagger.parameters['obj'] = {
       in: 'body',
-      description: 'Change product availability',
+      schema: {
+          $favorite: true,
+      }
+    } 
+  */
+  const { id } = req.params;
+  const findedProduct = products.find(product => product.id === id);
+
+  if (!findedProduct) {
+    return res.status(404).json();
+  }
+
+  if (typeof req.body.favorite !== 'boolean') {
+    return res.status(400).json();
+  }
+
+  findedProduct.favorite = req.body.favorite;
+
+  return res.status(200).json(findedProduct);  
+};
+
+// Admins
+
+exports.availability = (req, res) => {
+  /*
+    #swagger.tags = ['Admin endpoints']
+    #swagger.description = 'Change product availability'
+    #swagger.parameters['obj'] = {
+      in: 'body',
       schema: {
           $availability: true,
       }

@@ -16,7 +16,7 @@
       "type": "apiKey",
       "in": "header",
       "name": "Auth",
-      "description": "Type something here!"
+      "description": "`For admin rights type admin`"
     }
   },
   "consumes": [],
@@ -24,7 +24,9 @@
   "paths": {
     "/products": {
       "get": {
-        "tags": [],
+        "tags": [
+          "User endpoints"
+        ],
         "description": "",
         "parameters": [],
         "responses": {
@@ -36,8 +38,10 @@
     },
     "/products/{id}/rating": {
       "put": {
-        "tags": [],
-        "description": "",
+        "tags": [
+          "User endpoints"
+        ],
+        "description": "Change product rating (from 0 to 5)",
         "parameters": [
           {
             "name": "id",
@@ -48,7 +52,6 @@
           {
             "name": "obj",
             "in": "body",
-            "description": "Change product rating (from 0 to 5)",
             "schema": {
               "type": "object",
               "properties": {
@@ -84,10 +87,12 @@
         ]
       }
     },
-    "/products/{id}/availability": {
+    "/products/{id}/favorite": {
       "put": {
-        "tags": [],
-        "description": "",
+        "tags": [
+          "User endpoints"
+        ],
+        "description": "Change product favorite state",
         "parameters": [
           {
             "name": "id",
@@ -98,7 +103,57 @@
           {
             "name": "obj",
             "in": "body",
-            "description": "Change product availability",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "favorite": {
+                  "type": "boolean",
+                  "example": true
+                }
+              },
+              "required": [
+                "favorite"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "name": []
+          }
+        ]
+      }
+    },
+    "/products/{id}/availability": {
+      "put": {
+        "tags": [
+          "Admin endpoints"
+        ],
+        "description": "Change product availability",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "obj",
+            "in": "body",
             "schema": {
               "type": "object",
               "properties": {
