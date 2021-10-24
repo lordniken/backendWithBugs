@@ -21,14 +21,11 @@ exports.updateRating = (req, res) => {
     return res.status(404).json();
   }
 
-  if (Number(req.body.rating) > 5 || Number(req.body.rating) < 0 || !req.body.rating || !Number.isInteger(req.body.rating)) {
+  if (Number(req.body.rating) > 5 || Number(req.body.rating) < 0 || req.body.rating === undefined || !Number.isInteger(req.body.rating)) {
     return res.status(400).json();
   }
 
-  const test = { ... findedProduct };
-  test.rating = req.body.rating;
+  findedProduct.rating = req.body.rating;
 
-  // findedProduct.rating = req.body.rating;
-
-  return res.status(200).json(test);  
+  return res.status(200).json(findedProduct);  
 };
