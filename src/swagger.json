@@ -67,14 +67,64 @@
           "200": {
             "description": "OK"
           },
+          "400": {
+            "description": "Bad Request"
+          },
           "401": {
             "description": "Unauthorized"
           },
           "404": {
             "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "name": []
+          }
+        ]
+      }
+    },
+    "/products/{id}/availability": {
+      "put": {
+        "tags": [],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
           },
-          "500": {
-            "description": "Internal Server Error"
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Change product availability",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "availability": {
+                  "type": "boolean",
+                  "example": true
+                }
+              },
+              "required": [
+                "availability"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
           }
         },
         "security": [
